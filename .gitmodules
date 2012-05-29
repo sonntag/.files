@@ -1,0 +1,3 @@
+[submodule "fun.sh"]
+	path = fun.sh
+	url = https://github.com/mikeplus64/fun.sh.git
