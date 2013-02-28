@@ -1,11 +1,18 @@
-
 # Use emacs keybindings even if our EDITOR is set to vi
 bindkey -e
 
-# Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
-HISTSIZE=1000
-SAVEHIST=1000
+######################### history options ############################
+setopt EXTENDED_HISTORY        # store time in history
+setopt HIST_IGNORE_ALL_DUPS    # ignore duplicate history items
+setopt SHARE_HISTORY           # share history between prompts
+setopt HIST_VERIFY	       # perform history substitution and reload
+HISTSIZE=1000                  # spots for duplicates/uniques
+SAVEHIST=1000                  # unique events guaranteed
 HISTFILE=~/.zsh_history
+
+######################### zsh options ################################
+setopt AUTO_PUSHD              # push directories on every cd
+setopt AUTO_NAME_DIRS          # change directories to variable names
 
 # Use modern completion system
 autoload -Uz compinit
@@ -16,7 +23,11 @@ zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' menu select=2
-eval "$(dircolors -b)"
+
+if [[ "$VENDOR" != "apple" ]]; then
+   eval "$(dircolors -b)"  # Mac doesn't like this line
+fi
+
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
@@ -52,11 +63,14 @@ zle -N convertMultiDot
 bindkey . convertMultiDot
 
 # Setup default options
-setopt HIST_IGNORE_ALL_DUPS
-setopt SHARE_HISTORY
 setopt DVORAK
 
 bindkey "^[[A" history-beginning-search-backward
 bindkey "^[[B" history-beginning-search-forward
 
 export EDITOR=emacs
+
+
+autoload -Uz promptinit
+promptinit
+prompt adam1
