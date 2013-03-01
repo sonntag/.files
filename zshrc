@@ -1,6 +1,16 @@
 # Use emacs keybindings even if our EDITOR is set to vi
 bindkey -e
 
+######################### prompt options #############################
+autoload -Uz promptinit
+promptinit
+prompt adam1
+
+# set the right prompt to show vcs info
+export ENABLE_VCS_INFO="yes"
+ZSH_THEME=vcs_info
+export RPROMPT="%{${fg[yellow]}%}%B%1v%b"
+
 ######################### history options ############################
 setopt EXTENDED_HISTORY        # store time in history
 setopt HIST_IGNORE_ALL_DUPS    # ignore duplicate history items
@@ -71,6 +81,3 @@ bindkey "^[[B" history-beginning-search-forward
 export EDITOR=emacs
 
 
-autoload -Uz promptinit
-promptinit
-prompt adam1
