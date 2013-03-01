@@ -24,7 +24,7 @@ zstyle ':completion:*' format 'Completing %d'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' menu select=2
 
-if [[ "$VENDOR" != "apple" ]]; then
+if [[ -x "`whence -p dircolors`" ]]; then
    eval "$(dircolors -b)"  # Mac doesn't like this line
 fi
 
