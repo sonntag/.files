@@ -1,34 +1,17 @@
 # Use emacs keybindings even if our EDITOR is set to vi
 bindkey -e
 
-######################### vcs prompt info ############################
+######################### prompt options #############################
 autoload -Uz promptinit
 promptinit
 prompt adam1
 
 ENABLE_VCS_INFO="true"
 VCS_INFO_SHOW_TRACKING_BRANCH="true"
-#PS1='%{[%B%}%* %n@%2m %~%{%b%}]%{%F{yellow}%}%1v%{%f%} %{%F{red}%}%(?..(%?%))%{%f%}$'
-#RPROMPT=
-
 source .files/vcs_info.sh
 
-######################### prompt options #############################
 #export RPROMPT="%{${fg[yellow]}%}%B%1v%b"
 export RPROMPT='%{%F{yellow}%}%1v%{%f%} %{%F{red}%}%(?..(%?%))%{%f%}'
-
-#setopt prompt_subst
-#autoload -Uz vcs_info
-
-#zstyle ':vcs_info:*' enable git
-#zstyle ':vcs_info:git*:*' get-revision true
-#zstyle ':vcs_info:git*:*' check-for-changes true
-#zstyle ':vcs_info:git*' formats '%b'
-#zstyle ':vcs_info:git*' formats "%{$fg[grey]%}%s %{$reset_color%}%r/%S%{$fg[grey]%} %{$fg[blue]%}%b%{$reset_color%}%m%u%c%{$reset_color%}"
-
-#precmd () { vcs_info }
-
-#export RPROMPT="${vcs_info_msg_0_}"
 
 ######################### history options ############################
 setopt EXTENDED_HISTORY        # store time in history
