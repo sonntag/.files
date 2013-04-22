@@ -10,8 +10,7 @@ ENABLE_VCS_INFO="true"
 VCS_INFO_SHOW_TRACKING_BRANCH="true"
 source .files/vcs_info.sh
 
-#export RPROMPT="%{${fg[yellow]}%}%B%1v%b"
-export RPROMPT='%{%F{yellow}%}%1v%{%f%} %{%F{red}%}%(?..(%?%))%{%f%}'
+export RPROMPT='%B%{%F{yellow}%}%1v%{%f%} %{%F{red}%}%(?..(%?%))%{%f%}%b'
 
 ######################### history options ############################
 setopt EXTENDED_HISTORY        # store time in history
