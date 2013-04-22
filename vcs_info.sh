@@ -61,13 +61,13 @@ function +vi-git-remotebranch() {
     remote=${$(git rev-parse --verify ${hook_com[branch]}@{upstream} \
         --symbolic-full-name 2>/dev/null)/refs\/remotes\/}
 
-    # The first test will show a tracking branch whenever there is one. The
-    # second test, however, will only show the remote branch's name if it
-    # differs from the local one.
-
+    # Only show the name of the tracking branch if it differs from the name
+    # of the local branch
+    if [[ ${remote#*/} == ${hook_com[branch]} ]] ; then
+	remote=${remote%/*}
+    fi
 
     if [[ -n ${remote} ]] ; then
-    #if [[ -n ${remote} && ${remote#*/} != ${hook_com[branch]} ]] ; then
         if [[ ${#remote} -gt 25 ]]; then
             hook_com[branch]="${hook_com[branch]} >> ..${remote[-25, ${#remote}]}"
         else
