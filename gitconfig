@@ -1,0 +1,7 @@
+[core]
+	editor = emacs
+[user]
+	name = Justin Sonntag
+	email = justin.sonntag@gmail.com
+[color]
+	ui = auto
